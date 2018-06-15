@@ -1,0 +1,38 @@
+---
+# All variables needed to run this playbook or project
+
+# Ansible is flexible and there are many ways you can choose to place variables for the playbooks and roles they run. My preference is to keep any desired default values in their place in the playbooks or roles, but have one file to edit where required variables can be placed and/or default values overridden. My chosen pattern is to create this file for any playbook/project and place the required and desired variables here. This gives: a central place to edit needed values, the highest level of variable precedence and no need to re-pass variables when importing other playbooks into this project since variables placed here are also global in scope. To achieve this when running the playbook/project we will pass this file as parameter like so:
+# ansible-playbook master.yml -e @vars/all_vars.yml -i hosts/production
+
+
+#####     Required Variables      #####
+
+
+#####   Role - install-nagios-client   #####
+
+# Fully qualified domain name of your Nagios Server
+nagios_server_fqdn: "nagios.mydomain.com"
+
+# The fully qualified domain name or IP address of the machine you are adding to be monitored
+server_fqdn: "To Be Filled In"
+
+#####   Role - add-config-to-nagios-server    #####
+
+# The hostname of the machine you are monitoring. Host names should not have spaces in them.
+host_name: "my-server"   
+
+# The alias or Nagios friendly name to show in Nagios as the computer being monitored
+nagios_friendly_name: "My Important Server"    
+
+# The fully qualified domain name or IP address of the machine you are adding to be monitored
+server_fqdn: "myserver-to-monitor.com"     
+
+
+#####   Role - 3 vars    #####
+
+
+
+#####   Role - 4 vars    #####
+
+
+
