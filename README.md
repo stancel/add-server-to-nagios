@@ -1,7 +1,7 @@
 add-server-to-nagios
 =========
 
-Ansible role to install the Nagios NRPE client program onto a server and then added the needed config onto the Nagios4 monitoring server.
+Ansible playbook to install the Nagios NRPE client program onto a server and then added the needed config onto the Nagios4 monitoring server.
 
 
 How to Use
