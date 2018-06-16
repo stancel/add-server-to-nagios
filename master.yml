@@ -1,21 +1,13 @@
 ---
 
-- hosts: crm.processfast.com
+- hosts: "{{ server_fqdn }}"
   remote_user: root
-  vars:
-    #server_fqdn: "marketing.processfast.com"
-    #nagios_server_fqdn: "atlprocessfast.dyndns.org"
   roles:
     - install-nagios-client  
 
-- hosts: atlprocessfast.dyndns.org
-  #remote_user: brad
+- hosts: "{{ nagios_server_fqdn }}"
   become: true
   become_method: sudo
-  vars:
-    #hostname: "mautic-processfast"
-    #nagios_friendly_name: "ProcessFast Mautic"
-    #server_fqdn: "marketing.processfast.com"
   roles:
     - add-config-to-nagios-server
 
