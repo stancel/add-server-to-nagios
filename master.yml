@@ -3,12 +3,12 @@
 - hosts: "{{ server_fqdn }}"
   remote_user: root
   roles:
-    - install-nagios-client  
+    - stancel.install-nagios-client  
 
 - hosts: "{{ nagios_server_fqdn }}"
   become: true
   become_method: sudo
   roles:
-    - add-config-to-nagios-server
+    - stancel.add-config-to-nagios-server
 
 

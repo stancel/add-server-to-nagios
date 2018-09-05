@@ -11,7 +11,8 @@
 #####   Role - install-nagios-client   #####
 
 # Fully qualified domain name of your Nagios Server
-nagios_server_fqdn: "nagios.mydomain.com"
+nagios_server_fqdn: "{{ hostvars[groups['monitoring'][0]]['ansible_fqdn'] }}"
+
 
 # The fully qualified domain name or IP address of the machine you are adding to be monitored
 server_fqdn: "myserver-to-monitor.com"
@@ -22,7 +23,7 @@ server_fqdn: "myserver-to-monitor.com"
 host_name: "my-server"   
 
 # The alias or Nagios friendly name to show in Nagios as the computer being monitored
-nagios_friendly_name: "My Important Server"    
+nagios_friendly_name: "{{host_name}} Server"    
 
 # The fully qualified domain name or IP address of the machine you are adding to be monitored
 #server_fqdn: "myserver-to-monitor.com"     # Already covered above

@@ -19,9 +19,9 @@
 
 - name: add-config-to-nagios-server
   src: https://github.com/stancel/add-config-to-nagios-server
-  version: 1.0.0
+  #version: 1.0.0
   
 - name: install-nagios-client
   src: https://github.com/stancel/install-nagios-client
-  version: 1.0.0
+  #version: 1.0.0
   
