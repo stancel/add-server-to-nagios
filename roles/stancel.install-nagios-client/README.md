@@ -13,11 +13,11 @@ Role Variables
 
 Fully qualified domain name of your Nagios Server
 ```
-	nagios_server_fqdn: "mynagios.mydomain.com"
+	install_nagios_client_nagios_server_fqdn: "mynagios.mydomain.com"
 ```
 The fully qualified domain name or IP address of the machine you are adding to be monitored
 ```
-	server_fqdn: "myserver-to-monitor.com"
+	install_nagios_client_server_fqdn: "myserver-to-monitor.com"
 ```
 
 Dependencies
@@ -40,8 +40,8 @@ or
 
 	- hosts: your_server_to_monitor
 	  vars:
-		nagios_server_fqdn: "nagios.mydomain.com"
-		server_fqdn: "myserver-to-monitor.com"
+		install_nagios_client_nagios_server_fqdn: "nagios.mydomain.com"
+		install_nagios_client_server_fqdn: "myserver-to-monitor.com"
 	  roles:
 	    - { role: stancel.install-nagios-client }
 
@@ -53,4 +53,4 @@ BSD
 Author Information
 ------------------
 
-Brad Stancel
+[Brad Stancel](https://github.com/stancel)

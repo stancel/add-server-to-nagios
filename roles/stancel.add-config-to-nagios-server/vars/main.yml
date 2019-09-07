@@ -5,23 +5,19 @@
 # Fill in appropriate values below unless passing from a higher precedence
 
 # The hostname of the machine you are monitoring. Host names should not have spaces in them.
-host_name: "my-server"   
+add_config_to_nagios_server_host_name: "my-server"   
 
 # The alias or Nagios friendly name to show in Nagios as the computer being monitored
-nagios_friendly_name: "My Important Server"    
+add_config_to_nagios_server_nagios_friendly_name: "My Important Server"    
 
 # The fully qualified domain name or IP address of the machine you are adding to be monitored
-server_fqdn: "myserver-to-monitor.com"     
+add_config_to_nagios_server_server_fqdn: "myserver-to-monitor.com"     
 
 
+#####     Optional Variables      #####
 
-
-
-
-
-
-
-
+# Does Nagios need to monitor WordPress updates for this server?
+#add_config_to_nagios_server_is_a_wordpress_server: false
 
 
 

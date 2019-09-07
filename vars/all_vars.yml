@@ -5,35 +5,62 @@
 # ansible-playbook master.yml -e @vars/all_vars.yml -i hosts/production
 
 
-#####     Required Variables      #####
+#####     Required Variables  -  Playbook Level    #####
 
+# Host Name of the droplet, also the droplet name as shown in DigitalOcean
+host_name: "opsinsights-wp-prod"
 
-#####   Role - install-nagios-client   #####
+# The Fully Qualified Domain Name you'll be using for the server you are creating. DO DNS will create an A record for this entry and point it to your newly created droplet.
+server_fqdn: "opsinsights.com"
 
-# Fully qualified domain name of your Nagios Server
-nagios_server_fqdn: "{{ hostvars[groups['monitoring'][0]]['ansible_fqdn'] }}"
+# Is this a "new", "upgrade" or "restore" installation? "new" and "upgrade" installs install files from Git, "restore" skips any git deployments and expect a later role to restore files to the needed directory. 
+#installation_type: "new"
 
-
-# The fully qualified domain name or IP address of the machine you are adding to be monitored
-server_fqdn: "myserver-to-monitor.com"
-
-#####   Role - add-config-to-nagios-server    #####
-
-# The hostname of the machine you are monitoring. Host names should not have spaces in them.
-host_name: "my-server"   
+# Is this instance to be used for a "dev", "qa" or "prod" environment? Only "prod" environments will deploy the SuiteCRM schedulers.
+environment_type: "prod"
 
 # The alias or Nagios friendly name to show in Nagios as the computer being monitored
-nagios_friendly_name: "{{host_name}} Server"    
+nagios_friendly_name: "{{host_name}}-{{environment_type}}"
+
+# Environment Variables Set - These need to be set!
+digital_ocean_api_token: "{{ lookup('env', 'DO_API_TOKEN') }}"
+admin_user_ssh_key_fingerprint: "{{ lookup('env', 'DO_SSH_KEY_SIG_BRAD_PERSONAL') }}"
+control_server_ssh_key_fingerprint: "{{ lookup('env', 'DO_SSH_KEY_SIG_ATL_SERVER') }}"
+bareos_server_fqdn: "{{ lookup('env', 'BAREOS_STORAGE_DAEMON_FQDN') }}"
+bareos_storage_password: "{{ lookup('env', 'BAREOS_STORAGE_PASSWORD') }}"
+nagios_server_fqdn: "{{ lookup('env', 'NAGIOS_SERVER_FQDN') }}"
+
+
+
+
+
+
+
+
+
+#####   Archived   #####
+
+# Fully qualified domain name of your Nagios Server
+#nagios_server_fqdn: "{{ hostvars[groups['monitoring'][0]]['ansible_fqdn'] }}"
+
+
+#####   Role - stancel.install-nagios-client    #####
+# Fully qualified domain name of your Nagios Server
+install_nagios_client_nagios_server_fqdn: "{{ nagios_server_fqdn }}"
 
 # The fully qualified domain name or IP address of the machine you are adding to be monitored
-#server_fqdn: "myserver-to-monitor.com"     # Already covered above
+install_nagios_client_server_fqdn: "{{ server_fqdn }}"
 
 
-#####   Role - 3 vars    #####
+#####   Role - stancel.add-config-to-nagios-server    #####
 
+# The hostname of the machine you are monitoring. Host names should not have spaces in them.
+add_config_to_nagios_server_host_name: "{{ host_name }}"   
 
+# The alias or Nagios friendly name to show in Nagios as the computer being monitored
+add_config_to_nagios_server_nagios_friendly_name: "{{ nagios_friendly_name }}"    
 
-#####   Role - 4 vars    #####
-
+# The fully qualified domain name or IP address of the machine you are adding to be monitored
+add_config_to_nagios_server_server_fqdn: "{{ server_fqdn }}" 
 
 

@@ -13,15 +13,19 @@ Role Variables
 
 The hostname of the machine you are monitoring. Host names should not have spaces in them.
 ```
-	host_name: "my-server"   
+	add_config_to_nagios_server_host_name: "my-server"   
 ```
 The alias or Nagios friendly name to show in Nagios as the computer being monitored
 ```
-	nagios_friendly_name: "My Important Server"
+	add_config_to_nagios_server_nagios_friendly_name: "My Important Server"
 ```
 The fully qualified domain name or IP address of the machine you are adding to be monitored
 ```
-	server_fqdn: "myserver-to-monitor.com"
+	add_config_to_nagios_server_server_fqdn: "myserver-to-monitor.com"
+```
+Does Nagios need to monitor WordPress updates for this server? The default is false.
+```
+	add_config_to_nagios_server_is_a_wordpress_server: false
 ```
 
 Dependencies
@@ -43,9 +47,9 @@ or
 
 	- hosts: your_nagios_server
 	  vars:
-		host_name: "my-server"
-		nagios_friendly_name: "My Important Server"
-		server_fqdn: "myserver-to-monitor.com"
+		add_config_to_nagios_server_host_name: "my-server"
+		add_config_to_nagios_server_nagios_friendly_name: "My Important Server"
+		add_config_to_nagios_server_server_fqdn: "myserver-to-monitor.com"
 	  roles:
 	    - stancel.add-config-to-nagios-server 
 
@@ -57,4 +61,5 @@ GPLv3
 Author Information
 ------------------
 
-Brad Stancel
+[Brad Stancel](https://github.com/stancel) 
+

@@ -1,0 +1,5 @@
+---
+# defaults file for add-config-to-nagios-server
+
+# Does Nagios need to monitor WordPress updates for this server?
+add_config_to_nagios_server_is_a_wordpress_server: false

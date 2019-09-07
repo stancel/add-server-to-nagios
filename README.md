@@ -9,8 +9,17 @@ How to Use
 
 To use this playbook just run this command.
 
-	1. ansible-galaxy install -r requirements.yml -p roles/ (only needed if you want to download the roles)
-	2. ansible-playbook master.yml -e @vars/all_vars.yml -i /Users/Brad/.ansible/hosts
+	1. ansible-galaxy install -r requirements.yml -p roles/ --force
+	2. Create a file called .vault_pass in this folder and put a random string in it for decrypting your sensitive variables. Something like: QSkngTv#KTJ=WXpg6qVR
+	3. Fill out needed variables in vars/all_vars.yml and vars/vault.yml files
+	4. ansible-vault encrypt vars/vault.yml   #Encrypt the sensitive variables
+
+Execution: 
+  	
+```
+	ansible-playbook master.yml -e @vars/all_vars.yml -i /Users/Brad/.ansible/hosts
+```
+
 
 Requirements
 ------------
